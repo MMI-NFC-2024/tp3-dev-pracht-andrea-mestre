@@ -1,0 +1,64 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GraphicSpecies from "../components/GraphicSpecies.astro";
+import {
+    Tabs,
+    TabsList,
+    TabsTab,
+    TabsPanel,
+} from "accessible-astro-components";
+---
+
+<Layout>
+    <button
+        onclick="history.back()"
+        class="mb-4 px-4 py-2 rounded bg-gray-200 text-gray-700 hover:bg-gray-300 transition font-bold"
+        >&#8592; Retour</button
+    >
+    <Tabs>
+        <TabsList>
+            <TabsTab
+                class="text-2xl! font-bold! mb-4 text-purple-900! text-center! border-b-2! border-purple-300! pb-2! uppercase!"
+                id="tab-adelie"
+                controls="panel-adelie"
+                selected>Adelie</TabsTab
+            >
+            <TabsTab
+                class="text-2xl! font-bold! mb-4! text-red-900! text-center! border-b-2! border-red-300! pb-2! italic!"
+                id="tab-gentoo"
+                controls="panel-gentoo">Gentoo</TabsTab
+            >
+            <TabsTab
+                class="text-2xl! font-bold! mb-4! text-green-700! text-center! border-b-2! border-green-300! pb-2! uppercase!"
+                id="tab-chinstrap"
+                controls="panel-chinstrap">Chinstrap</TabsTab
+            >
+        </TabsList>
+        <div class="max-w-3xl mx-auto mb-12">
+            <TabsPanel id="panel-adelie" labelledby="tab-adelie" selected>
+                <h2
+                    class="text-2xl font-bold mb-4 text-purple-900 text-center border-b-2 border-purple-300 pb-2 uppercase"
+                >
+                    Graphique Penguins Adelie
+                </h2>
+                <GraphicSpecies species="Adelie" />
+            </TabsPanel>
+            <TabsPanel id="panel-gentoo" labelledby="tab-gentoo">
+                <h2
+                    class="text-2xl font-bold mb-4 text-red-900 text-center border-b-2 border-red-300 pb-2 italic"
+                >
+                    Graphique Penguins Gentoo
+                </h2>
+                <GraphicSpecies species="Gentoo" />
+            </TabsPanel>
+            <TabsPanel id="panel-chinstrap" labelledby="tab-chinstrap">
+                <h2
+                    class="text-2xl! mb-4! text-green-700! text-center! border-b-2! border-green-300! pb-2! uppercase!"
+                >
+                    Graphique Penguins Chinstrap
+                </h2>
+                <GraphicSpecies species="Chinstrap" />
+            </TabsPanel>
+        </div>
+    </Tabs>
+</Layout>

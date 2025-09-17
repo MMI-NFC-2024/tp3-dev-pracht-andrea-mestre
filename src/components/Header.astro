@@ -1,19 +1,27 @@
 <header class="w-full py-4 bg-gray-50 shadow">
 	<nav class="flex justify-center gap-4">
-		<button onclick="history.back()" class="px-4 py-2 rounded bg-gray-200 text-gray-700 hover:bg-gray-300 transition">&#8592; Retour</button>
-		<select id="species" class="px-4 py-2 rounded bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-300">
+		<a href="/"
+			class="px-4 py-2 rounded bg-gray-200 text-gray-700
+			hover:bg-gray-300 transition">&#8592; Retour
+		</a>
+		<select
+			id="species"
+			class="px-4 py-2 rounded bg-white border border-gray-300 text-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-300"
+		>
 			<option value="Adelie">Adelie</option>
 			<option value="Chinstrap">Chinstrap</option>
 			<option value="Gentoo">Gentoo</option>
 		</select>
 	</nav>
 	<script>
-		document.querySelector("#species")?.addEventListener("change", (evt) => {
-			const target = evt.target as HTMLSelectElement;
-			if (target) {
-				const value = target.value;
-				location.pathname = "/species/" + value;
-			}
-		});
+		document
+			.querySelector("#species")
+			?.addEventListener("change", (evt) => {
+				const target = evt.target as HTMLSelectElement;
+				if (target) {
+					const value = target.value;
+					location.pathname = "/species/" + value;
+				}
+			});
 	</script>
 </header>
