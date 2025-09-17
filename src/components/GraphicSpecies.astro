@@ -1,0 +1,25 @@
+---
+import penguins from "../assets/penguins.json";
+import PlotFigure from "../components/PlotFigure.astro";
+import * as Plot from "@observablehq/plot";
+
+const { species } = Astro.props;
+const penguinsFiltered = penguins.filter(({ species: s }) => s === species);
+---
+
+<div
+    class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center border border-gray-100"
+>
+    <div class="w-full flex justify-center overflow-x-auto">
+        <PlotFigure
+            options={{
+                marks: [
+                    Plot.dot(penguinsFiltered, {
+                        x: "culmen_length_mm",
+                        y: "culmen_depth_mm",
+                    }),
+                ],
+            }}
+        />
+    </div>
+</div>

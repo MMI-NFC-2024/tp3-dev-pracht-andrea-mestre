@@ -1,0 +1,183 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GraphicSpecies from "../components/GraphicSpecies.astro";
+---
+
+<Layout>
+    <button onclick="history.back()" class="mb-4 px-4 py-2 rounded bg-gray-200 text-gray-700 hover:bg-gray-300 transition font-bold">&#8592; Retour</button>
+    <nav
+        class="sticky top-0 bg-white border-b border-gray-200 shadow-sm z-10 py-4 mb-8"
+    >
+        <div class="max-w-4xl mx-auto px-6">
+            <ul class="flex justify-center space-x-8">
+                <li>
+                    <a
+                        href="#adelie"
+                        class="font-medium px-4 py-2 rounded-lg bg-purple-100 text-purple-900 hover:bg-purple-200 hover:text-purple-900 transition-all duration-300"
+                    >
+                        Adelie
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="#gentoo"
+                        class="font-medium px-4 py-2 rounded-lg bg-red-100 text-red-900 hover:bg-red-200 hover:text-red-900 transition-all duration-300"
+                    >
+                        Gentoo
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="#chinstrap"
+                        class="font-medium px-4 py-2 rounded-lg bg-green-100 text-green-700 hover:bg-green-200 hover:text-green-700 transition-all duration-300"
+                    >
+                        Chinstrap
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="slider-arrows-container">
+        <button class="slider-arrow left" aria-label="Précédent" onclick="document.querySelector('.slider-container').scrollBy({left: -window.innerWidth/2, behavior: 'smooth'})">&#8592;</button>
+        <div class="slider-container">
+            <div class="slider-wrapper">
+                <section id="adelie" class="slide">
+                    <div class="slide-content">
+                        <h2 class="text-xl font-bold py-6 text-center" style="color: #7c3aed; border-bottom: 2px solid #c4b5fd;">
+                            Graphique Penguins Adelie
+                        </h2>
+                        <GraphicSpecies species="Adelie" />
+                    </div>
+                </section>
+
+                <section id="gentoo" class="slide">
+                    <div class="slide-content">
+                        <h2 class="text-xl font-bold py-6 text-center" style="color: #dc2626; border-bottom: 2px solid #fca5a5;">
+                            Graphique Penguins Gentoo
+                        </h2>
+                        <GraphicSpecies species="Gentoo" />
+                    </div>
+                </section>
+
+                <section id="chinstrap" class="slide">
+                    <div class="slide-content">
+                        <h2 class="text-xl font-bold py-6 text-center" style="color: #15803d; border-bottom: 2px solid #86efac;">
+                            Graphique Penguins Chinstrap
+                        </h2>
+                        <GraphicSpecies species="Chinstrap" />
+                    </div>
+                </section>
+            </div>
+        </div>
+        <button class="slider-arrow right" aria-label="Suivant" onclick="document.querySelector('.slider-container').scrollBy({left: window.innerWidth/2, behavior: 'smooth'})">&#8594;</button>
+    </div>
+</Layout>
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .slider-arrows-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
+    }
+    .slider-arrow {
+        background: linear-gradient(135deg, #e0e7ff 0%, #f3f4f6 100%);
+        border: 2px solid #a5b4fc;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        font-size: 2.2rem;
+        color: #6366f1;
+        cursor: pointer;
+        box-shadow: 0 4px 16px #6366f133;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s;
+        position: relative;
+        z-index: 2;
+    }
+    .slider-arrow.left {
+        margin-right: 1rem;
+    }
+    .slider-arrow.right {
+        margin-left: 1rem;
+    }
+    .slider-arrow:hover {
+        background: linear-gradient(135deg, #6366f1 0%, #a5b4fc 100%);
+        color: #fff;
+        border-color: #6366f1;
+        box-shadow: 0 6px 24px #6366f155;
+    }
+    .slider-container {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .slider-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .slider-wrapper {
+        display: flex;
+        width: 300%;
+        height: 80vh;
+    }
+
+    .slide {
+        width: 33.333%;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        scroll-margin-left: 0;
+    }
+
+    .slide-content {
+        width: 90%;
+        max-width: 800px;
+        padding: 2rem;
+    }
+
+    nav a {
+        position: relative;
+        overflow: hidden;
+    }
+
+    nav a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #000;
+        transition: width 0.3s ease;
+    }
+
+    nav a:hover::before {
+        width: 100%;
+    }
+
+    #adelie {
+        scroll-margin-left: 0;
+    }
+
+    #gentoo {
+        scroll-margin-left: 33.333%;
+    }
+
+    #chinstrap {
+        scroll-margin-left: 66.666%;
+    }
+</style>
